@@ -4,12 +4,16 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace GeoJSON.Net.Feature
 {
     /// <summary>
     /// Defines the FeatureCollection type.
     /// </summary>
+    /// 
+
+    [DataContract]
     public class FeatureCollection : GeoJSONObject, IEqualityComparer<FeatureCollection>, IEquatable<FeatureCollection>
     {
         /// <summary>
@@ -40,6 +44,7 @@ namespace GeoJSON.Net.Feature
         /// </summary>
         /// <value>The features.</value>
         [JsonProperty(PropertyName = "features", Required = Required.Always)]
+        [DataMember]
         public List<Feature> Features { get; private set; }
 
         #region IEqualityComparer, IEquatable

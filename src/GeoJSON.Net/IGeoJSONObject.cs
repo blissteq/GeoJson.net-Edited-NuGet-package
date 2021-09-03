@@ -5,6 +5,8 @@ namespace GeoJSON.Net
     /// <summary>
     /// Base Interface for GeoJSONObject types.
     /// </summary>
+    /// 
+
     public interface IGeoJSONObject
     {
         /// <summary>

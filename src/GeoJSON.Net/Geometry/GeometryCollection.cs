@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using GeoJSON.Net.Converters;
 using Newtonsoft.Json;
 
@@ -15,6 +16,8 @@ namespace GeoJSON.Net.Geometry
     /// <remarks>
     /// See https://tools.ietf.org/html/rfc7946#section-3.1.8
     /// </remarks>
+    /// 
+    [DataContract]
     public class GeometryCollection : GeoJSONObject, IGeometryObject, IEqualityComparer<GeometryCollection>, IEquatable<GeometryCollection>
     {
         /// <summary>
@@ -41,6 +44,7 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         [JsonProperty("geometries", Required = Required.Always)]
         [JsonConverter(typeof(GeometryConverter))]
+        [DataMember]
         public ReadOnlyCollection<IGeometryObject> Geometries { get; private set; }
 
         #region IEqualityComparer, IEquatable

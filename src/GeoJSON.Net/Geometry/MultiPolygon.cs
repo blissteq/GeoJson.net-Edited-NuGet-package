@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using GeoJSON.Net.Converters;
 using Newtonsoft.Json;
 
@@ -15,6 +16,8 @@ namespace GeoJSON.Net.Geometry
     /// <remarks>
     /// See https://tools.ietf.org/html/rfc7946#section-3.1.7
     /// </remarks>
+    /// 
+    [DataContract]
     public class MultiPolygon : GeoJSONObject, IGeometryObject, IEqualityComparer<MultiPolygon>, IEquatable<MultiPolygon>
     {
 
@@ -46,6 +49,7 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PolygonEnumerableConverter))]
+        [DataMember]
         public ReadOnlyCollection<Polygon> Coordinates { get; }
 
         #region IEqualityComparer, IEquatable

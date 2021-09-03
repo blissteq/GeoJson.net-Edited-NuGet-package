@@ -9,6 +9,7 @@ using GeoJSON.Net.Converters;
 using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using System;
+using System.Runtime.Serialization;
 
 namespace GeoJSON.Net.Feature
 {
@@ -19,10 +20,13 @@ namespace GeoJSON.Net.Feature
     /// <remarks>
     /// See https://tools.ietf.org/html/rfc7946#section-3.2
     /// </remarks>
+    /// 
+    [DataContract]
     public class Feature<TGeometry, TProps> : GeoJSONObject, IEquatable<Feature<TGeometry, TProps>>
         where TGeometry : IGeometryObject
     {
         [JsonConstructor]
+      
         public Feature(TGeometry geometry, TProps properties, string id = null)
         {
             Geometry = geometry;
@@ -33,13 +37,16 @@ namespace GeoJSON.Net.Feature
         public override GeoJSONObjectType Type => GeoJSONObjectType.Feature;
         
         [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
+        [DataMember]
         public string Id { get; }
         
         [JsonProperty(PropertyName = "geometry", Required = Required.AllowNull)]
         [JsonConverter(typeof(GeometryConverter))]
+        [DataMember]
         public TGeometry Geometry { get; }
         
         [JsonProperty(PropertyName = "properties", Required = Required.AllowNull)]
+        [DataMember]
         public TProps Properties { get; }
         
         /// <summary>
@@ -132,6 +139,7 @@ namespace GeoJSON.Net.Feature
         /// <param name="properties">The properties.</param>
         /// <param name="id">The (optional) identifier.</param>
         [JsonConstructor]
+        
         public Feature(TGeometry geometry, IDictionary<string, object> properties = null, string id = null)
         : base(geometry, properties ?? new Dictionary<string, object>(), id)
         {

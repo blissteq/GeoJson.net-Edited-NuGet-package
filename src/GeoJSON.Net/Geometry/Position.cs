@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace GeoJSON.Net.Geometry
 {
@@ -10,6 +11,8 @@ namespace GeoJSON.Net.Geometry
     /// A position is the fundamental geometry construct, consisting of <see cref="Latitude" />,
     /// <see cref="Longitude" /> and (optionally) <see cref="Altitude" />.
     /// </summary>
+    /// 
+    [DataContract]
     public class Position : IPosition, IEqualityComparer<Position>, IEquatable<Position>
     {
         private static readonly DoubleTenDecimalPlaceComparer DoubleComparer = new DoubleTenDecimalPlaceComparer();
@@ -74,16 +77,22 @@ namespace GeoJSON.Net.Geometry
         /// <summary>
         /// Gets the altitude.
         /// </summary>
+        /// 
+        [DataMember]
         public double? Altitude { get; }
 
         /// <summary>
         /// Gets the latitude or Y coordinate
         /// </summary>
+        /// 
+        [DataMember]
         public double Latitude { get; }
 
         /// <summary>
         /// Gets the longitude or X coordinate
         /// </summary>
+        /// 
+        [DataMember]
         public double Longitude { get; }
         
         /// <summary>

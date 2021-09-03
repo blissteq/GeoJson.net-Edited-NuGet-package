@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -11,12 +12,14 @@ namespace GeoJSON.Net.CoordinateReferenceSystem
     /// Base class for all IGeometryObject implementing types
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
+    [DataContract]
     public abstract class CRSBase : IEqualityComparer<CRSBase>, IEquatable<CRSBase>
     {
         /// <summary>
         /// Gets the properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties", Required = Required.Always)]
+        [DataMember]
         public Dictionary<string, object> Properties { get; internal set; }
 
         /// <summary>
@@ -24,6 +27,7 @@ namespace GeoJSON.Net.CoordinateReferenceSystem
         /// </summary>
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
         [JsonConverter(typeof(StringEnumConverter))]
+        [DataMember]
         public CRSType Type { get; internal set; }
 
         #region IEqualityComparer, IEquatable

@@ -4,6 +4,7 @@ using System;
 using GeoJSON.Net.Converters;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace GeoJSON.Net.Geometry
 {
@@ -14,6 +15,8 @@ namespace GeoJSON.Net.Geometry
     /// <remarks>
     /// See https://tools.ietf.org/html/rfc7946#section-3.1.2
     /// </remarks>
+    /// 
+    [DataContract]
     public class Point : GeoJSONObject, IGeometryObject, IEqualityComparer<Point>, IEquatable<Point>
     {
 
@@ -33,6 +36,7 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PositionConverter))]
+        [DataMember]
         public IPosition Coordinates { get; }
 
         #region IEqualityComparer, IEquatable

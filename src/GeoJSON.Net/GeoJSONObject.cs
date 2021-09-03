@@ -15,6 +15,7 @@ namespace GeoJSON.Net
     ///     Base class for all IGeometryObject implementing types
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
+    [DataContract]
     public abstract class GeoJSONObject : IGeoJSONObject, IEqualityComparer<GeoJSONObject>, IEquatable<GeoJSONObject>
     {
         internal static readonly DoubleTenDecimalPlaceComparer DoubleComparer = new DoubleTenDecimalPlaceComparer();
@@ -32,6 +33,7 @@ namespace GeoJSON.Net
         ///     system of the GeoJSON object of which it is a member.
         /// </value>
         [JsonProperty(PropertyName = "bbox", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
+        [DataMember]
         public double[] BoundingBoxes { get; set; }
 
         /// <summary>
@@ -47,6 +49,7 @@ namespace GeoJSON.Net
         [JsonProperty(PropertyName = "crs", Required = Required.Default, DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
             NullValueHandling = NullValueHandling.Include)]
         [JsonConverter(typeof(CrsConverter))]
+        [DataMember]
         //[DefaultValue(typeof(DefaultCRS), "")]
         public ICRSObject CRS { get; set; }
 
@@ -56,6 +59,7 @@ namespace GeoJSON.Net
         /// </summary>
         [JsonProperty(PropertyName = "type", Required = Required.Always, DefaultValueHandling = DefaultValueHandling.Include)]
         [JsonConverter(typeof(StringEnumConverter))]
+        [DataMember]
         public abstract GeoJSONObjectType Type { get; }
 
 
