@@ -34,7 +34,8 @@ namespace GeoJSON.Net.Feature
             Id = id;
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.Feature;
+        [DataMember]
+        public override GeoJSONObjectType Type { get; set; }
         
         [JsonProperty(PropertyName = "id", NullValueHandling = NullValueHandling.Ignore)]
         [DataMember]
@@ -43,11 +44,11 @@ namespace GeoJSON.Net.Feature
         [JsonProperty(PropertyName = "geometry", Required = Required.AllowNull)]
         [JsonConverter(typeof(GeometryConverter))]
         [DataMember]
-        public TGeometry Geometry { get; }
+        public TGeometry Geometry { get; set; }
         
         [JsonProperty(PropertyName = "properties", Required = Required.AllowNull)]
         [DataMember]
-        public TProps Properties { get; }
+        public TProps Properties { get; set; }
         
         /// <summary>
         /// Equality comparer.

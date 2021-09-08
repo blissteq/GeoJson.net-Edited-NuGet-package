@@ -18,6 +18,6 @@ namespace GeoJSON.Net.Geometry
         /// <value>
         /// The type of the object.
         /// </value>
-        GeoJSONObjectType Type { get; }
+        GeoJSONObjectType Type { get; set; }
     }
 }

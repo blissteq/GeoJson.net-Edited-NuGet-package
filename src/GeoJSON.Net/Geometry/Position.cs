@@ -79,21 +79,21 @@ namespace GeoJSON.Net.Geometry
         /// </summary>
         /// 
         [DataMember]
-        public double? Altitude { get; }
+        public double? Altitude { get; set; }
 
         /// <summary>
         /// Gets the latitude or Y coordinate
         /// </summary>
         /// 
         [DataMember]
-        public double Latitude { get; }
+        public double Latitude { get; set; }
 
         /// <summary>
         /// Gets the longitude or X coordinate
         /// </summary>
         /// 
         [DataMember]
-        public double Longitude { get; }
+        public double Longitude { get; set; }
         
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.

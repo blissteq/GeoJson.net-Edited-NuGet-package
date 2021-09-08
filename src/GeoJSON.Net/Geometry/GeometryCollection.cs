@@ -37,7 +37,7 @@ namespace GeoJSON.Net.Geometry
                 geometries?.ToArray() ?? throw new ArgumentNullException(nameof(geometries)));
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.GeometryCollection;
+        public override GeoJSONObjectType Type { get; set; }
 
         /// <summary>
         /// Gets the list of Polygons enclosed in this MultiPolygon.
@@ -45,7 +45,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("geometries", Required = Required.Always)]
         [JsonConverter(typeof(GeometryConverter))]
         [DataMember]
-        public ReadOnlyCollection<IGeometryObject> Geometries { get; private set; }
+        public ReadOnlyCollection<IGeometryObject> Geometries { get; set; }
 
         #region IEqualityComparer, IEquatable
 

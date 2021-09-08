@@ -42,7 +42,7 @@ namespace GeoJSON.Net.Geometry
         {
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.MultiPolygon;
+        public override GeoJSONObjectType Type {get; set;}
 
         /// <summary>
         /// The list of Polygons enclosed in this <see cref="MultiPolygon"/>.
@@ -50,7 +50,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PolygonEnumerableConverter))]
         [DataMember]
-        public ReadOnlyCollection<Polygon> Coordinates { get; }
+        public ReadOnlyCollection<Polygon> Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

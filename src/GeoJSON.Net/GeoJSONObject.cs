@@ -60,7 +60,7 @@ namespace GeoJSON.Net
         [JsonProperty(PropertyName = "type", Required = Required.Always, DefaultValueHandling = DefaultValueHandling.Include)]
         [JsonConverter(typeof(StringEnumConverter))]
         [DataMember]
-        public abstract GeoJSONObjectType Type { get; }
+        public abstract GeoJSONObjectType Type { get; set; }
 
 
         #region IEqualityComparer, IEquatable

@@ -36,7 +36,7 @@ namespace GeoJSON.Net.Geometry
         {
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.MultiPoint;
+        public override GeoJSONObjectType Type {get; set; }
 
         /// <summary>
         /// The points contained in this <see cref="MultiPoint"/>.
@@ -44,7 +44,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PointEnumerableConverter))]
         [DataMember]
-        public ReadOnlyCollection<Point> Coordinates { get; }
+        public ReadOnlyCollection<Point> Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

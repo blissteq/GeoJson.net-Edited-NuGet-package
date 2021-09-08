@@ -29,15 +29,15 @@ namespace GeoJSON.Net.Geometry
             Coordinates = coordinates ?? throw new ArgumentNullException(nameof(coordinates));
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.Point;
+        public override GeoJSONObjectType Type { get; set; }
 
         /// <summary>
         /// The <see cref="IPosition" /> underlying this point.
         /// </summary>
-        [JsonProperty("coordinates", Required = Required.Always)]
+        [JsonProperty("coordinates", Required = Required.AllowNull)]
         [JsonConverter(typeof(PositionConverter))]
         [DataMember]
-        public IPosition Coordinates { get; }
+        public IPosition Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

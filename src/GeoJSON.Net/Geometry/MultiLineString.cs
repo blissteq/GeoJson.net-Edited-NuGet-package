@@ -42,7 +42,8 @@ namespace GeoJSON.Net.Geometry
         {
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.MultiLineString;
+        public override GeoJSONObjectType Type {
+            get; set; }
 
         /// <summary>
         /// The collection of line strings of this <see cref="MultiLineString"/>.
@@ -50,7 +51,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(LineStringEnumerableConverter))]
         [DataMember]
-        public ReadOnlyCollection<LineString> Coordinates { get; }
+        public ReadOnlyCollection<LineString> Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

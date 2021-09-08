@@ -53,7 +53,7 @@ namespace GeoJSON.Net.Geometry
         {
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.Polygon;
+        public override GeoJSONObjectType Type { get; set; }
 
         /// <summary>
         /// Gets the list of linestrings defining this <see cref="Polygon" />.
@@ -61,7 +61,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(LineStringEnumerableConverter))]
         [DataMember]
-        public ReadOnlyCollection<LineString> Coordinates { get; }
+        public ReadOnlyCollection<LineString> Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

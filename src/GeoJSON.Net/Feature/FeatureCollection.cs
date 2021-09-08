@@ -37,7 +37,8 @@ namespace GeoJSON.Net.Feature
             Features = features;
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.FeatureCollection;
+        [DataMember]
+        public override GeoJSONObjectType Type { get; set; }
 
         /// <summary>
         /// Gets the features.
@@ -45,7 +46,7 @@ namespace GeoJSON.Net.Feature
         /// <value>The features.</value>
         [JsonProperty(PropertyName = "features", Required = Required.Always)]
         [DataMember]
-        public List<Feature> Features { get; private set; }
+        public List<Feature> Features { get;  set; }
 
         #region IEqualityComparer, IEquatable
 

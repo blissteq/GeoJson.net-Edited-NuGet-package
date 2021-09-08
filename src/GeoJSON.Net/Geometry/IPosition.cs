@@ -12,18 +12,18 @@ namespace GeoJSON.Net.Geometry
         /// <summary>
         /// Gets the altitude.
         /// </summary>
-        double? Altitude { get; }
+        double? Altitude { get; set; }
     
         /// <summary>
         /// Gets the latitude.
         /// </summary>
         /// <value>The latitude.</value>
-         double Latitude { get; }
+         double Latitude { get; set; }
 
         /// <summary>
         /// Gets the longitude.
         /// </summary>
         /// <value>The longitude.</value>
-        double Longitude { get; }
+        double Longitude { get; set; }
     }
 }

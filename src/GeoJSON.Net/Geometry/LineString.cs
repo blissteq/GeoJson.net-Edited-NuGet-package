@@ -48,7 +48,7 @@ namespace GeoJSON.Net.Geometry
             }
         }
 
-        public override GeoJSONObjectType Type => GeoJSONObjectType.LineString;
+        public override GeoJSONObjectType Type { get; set; }
 
         /// <summary>
         /// The positions of the line string.
@@ -56,7 +56,7 @@ namespace GeoJSON.Net.Geometry
         [JsonProperty("coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PositionEnumerableConverter))]
         [DataMember]
-        public ReadOnlyCollection<IPosition> Coordinates { get; }
+        public ReadOnlyCollection<IPosition> Coordinates { get; set; }
 
         /// <summary>
         /// Determines whether this instance has its first and last coordinate at the same position and thereby is closed.
